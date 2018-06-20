@@ -1,0 +1,44 @@
+{
+  "name": "pricesearcher",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "axios": "^0.18.0",
+    "node-sass-chokidar": "^1.3.0",
+    "npm-run-all": "^4.1.3",
+    "react": "^16.4.1",
+    "react-dom": "^16.4.1",
+    "react-redux": "^5.0.7",
+    "react-router-dom": "^4.3.1",
+    "react-scripts": "1.1.4",
+    "react-transition-group": "^2.3.1",
+    "react-waypoint": "^8.0.1",
+    "recharts": "^1.0.0-beta.10",
+    "redux": "^4.0.0",
+    "redux-form": "^7.4.2",
+    "redux-promise": "^0.6.0"
+  },
+  "scripts": {
+    "server": "node server/server.js",
+    "build-css": "node-sass-chokidar src/ -o src/",
+    "watch-css": "npm run build-css && node-sass-chokidar src/ -o src/ --watch --recursive",
+    "start-js": "react-scripts start",
+    "start": "npm-run-all -p watch-css server start-js",
+    "build-js": "react-scripts build",
+    "build": "npm-run-all build-css build-js",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  },
+  "devDependencies": {
+    "json-server": "^0.14.0"
+  },
+  "proxy": {
+    "/api/data": {
+      "target": "http://localhost:3001/api/data",
+      "pathRewrite": {
+        "^api": ""
+      },
+      "changeOrigin": true
+    }
+  }
+}
